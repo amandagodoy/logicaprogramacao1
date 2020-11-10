@@ -6,7 +6,7 @@
 
 <script>
 
-    var segredo = [5,7,10,2]; // ou Math.round(Math.random() * 10);
+    var segredo = [5,7,10,2,3]; // ou Math.round(Math.random() * 10);
 
     var input = document.querySelector("input");
 
@@ -14,13 +14,17 @@
 
     function verifica() {
 
-        if(input.value == segredo) {
+        for(var posicao = 0; posicao < segredos.length; posicao++) {
+            
+            if(input.value == segredos [posicao]) {
 
-        alert("Você acertou!");
-        } else {
-
-        alert("Você errou!");
+            alert("Você acertou!");
+            break;
+            } //else {
+            //
+            //}
         }
+        alert("Você errou!");
 
         input.value = "";
         input.focus();
