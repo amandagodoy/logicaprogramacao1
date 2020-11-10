@@ -6,26 +6,66 @@
 
 <script>
 
-    var segredo = [5,7,10,2,3]; // ou Math.round(Math.random() * 10);
+    function sorteia() {
+        return Math.round(Math.random() * 10);
+    }
+
+    function sorteiaNumeros(quantidade) {
+
+        var segredo = [];
+        var numero = 1;
+
+        while(numero <= quantidade) {
+
+            var numeroAleatorio = segredo();
+
+            if(numeroAleatorio !== 0) {
+
+                var achou = false;
+
+                for(var posicao = 0; posicao < segredo.length; posicao++) {
+                    if(segredo[posicao] == numeroAleatorio) {
+                        achou = true;
+                        break;
+                    }
+                }
+
+                if(achou == false) {
+                    segredos.push(numeroAleatorio);
+                }
+                numero++;
+            }
+            
+        }
+
+        return segredo;
+    }
+
+    var segredos = sorteiaNumeros (3);
+
+    //var segredo = [5,7,10,2,3]; // ou Math.round(Math.random() * 10);
 
     var input = document.querySelector("input");
-
     input.focus();
 
     function verifica() {
 
+        var achou = false;
         for(var posicao = 0; posicao < segredos.length; posicao++) {
             
             if(input.value == segredos [posicao]) {
 
             alert("Você acertou!");
+            achou = true;
             break;
-            } //else {
-            //
-            //}
+            }
         }
-        alert("Você errou!");
 
+        if(achou == false) {
+
+            alert("Você errou!");
+        }
+        
         input.value = "";
         input.focus();
     }
